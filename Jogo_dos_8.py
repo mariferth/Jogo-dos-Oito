@@ -103,7 +103,7 @@ for i in range(linhas):
     for j in range(colunas):
         puzzle.append(tab[i][j])
 
-print(puzzle)
+#print(puzzle)
 
 #py program to check if a given instance of 8 puzzle is solvable or not 
   
@@ -113,7 +113,6 @@ def getInvCount(arr):
     for i in range(8):
         for j in range(i+1, 9):
              # Value 0 is used for empty space 
-            #print ('foi')
             if arr[j] and arr[i] and arr[i] > arr[j]:
                 inv_count = inv_count + 1 
     print(inv_count)
@@ -368,25 +367,23 @@ def Gulosa_h2(tab):
             pe = paraEsquerda(aux)
             aux = deepcopy(x.matriz) 
             pd = paraDireita(aux)
-            compara = []
             if pc != None: 
                 if verificaIgual(abertos, fechados, pc) == 0:
                     estado2 = Estado(pc, h2(pc), 0, h2(pc), x)
-                    compara.append(estado2)
+                    abertos.append(estado2)
             if pb != None: 
                 if verificaIgual(abertos, fechados, pb) == 0: 
                     estado3 = Estado(pb, h2(pb), 0, h2(pb), x)
-                    compara.append(estado3)
+                    abertos.append(estado3)
             if pe != None: 
                 if verificaIgual(abertos, fechados, pe) == 0:
                     estado4 = Estado(pe, h2(pe), 0, h2(pe), x)
-                    compara.append(estado4)
+                    abertos.append(estado4)
             if pd != None:
                 if verificaIgual(abertos, fechados, pd) == 0:
                     estado5 = Estado(pd, h2(pd), 0, h2(pd), x)
-                    compara.append(estado5)
-            compara.sort(key = attrgetter('f'))
-            abertos.append(compara.pop(0))
+                    abertos.append(estado5)
+            abertos.sort(key = attrgetter('f'))
     return('FALHA :(')
 ###############################################################################################
 # Distância euclidiana.
