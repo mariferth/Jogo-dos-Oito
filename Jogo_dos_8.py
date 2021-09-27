@@ -340,9 +340,13 @@ def h2(tab):
                 total += abs(2-i) + abs(1-j)
     return total
 
-def verificaIgual_gulosa(fechados, est):        
+def verificaIgual_gulosa(fechados, abertos, est):        
     for i in range(len(fechados)):
         if est == fechados[i].matriz:
+            return 1   
+    
+    for i in range(len(abertos)):
+        if est == abertos[i].matriz:
             return 1   
     return 0  
 
@@ -376,19 +380,19 @@ def Gulosa_h2(tab):
             pd = paraDireita(aux)
             compara = []
             if pc != None: 
-                if verificaIgual_gulosa(fechados, pc) == 0:
+                if verificaIgual_gulosa(fechados, abertos, pc) == 0:
                     estado2 = Estado(pc, h2(pc), 0, h2(pc), x)
                     compara.append(estado2)
             if pb != None: 
-                if verificaIgual_gulosa(fechados, pb) == 0: 
+                if verificaIgual_gulosa(fechados, abertos, pc) == 0: 
                     estado3 = Estado(pb, h2(pb), 0, h2(pb), x)
                     compara.append(estado3)
             if pe != None: 
-                if verificaIgual_gulosa(fechados, pe) == 0:
+                if verificaIgual_gulosa(fechados, abertos, pc) == 0:
                     estado4 = Estado(pe, h2(pe), 0, h2(pe), x)
                     compara.append(estado4)
             if pd != None:
-                if verificaIgual_gulosa(fechados, pd) == 0:
+                if verificaIgual_gulosa(fechados, abertos, pc) == 0:
                     estado5 = Estado(pd, h2(pd), 0, h2(pd), x)
                     compara.append(estado5)
             compara.sort(key = attrgetter('f'))
