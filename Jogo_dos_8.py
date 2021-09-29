@@ -115,7 +115,7 @@ def getInvCount(arr):
              # Value 0 is used for empty space 
             if arr[j] and arr[i] and arr[i] > arr[j]:
                 inv_count = inv_count + 1 
-    print(inv_count)
+    #print(inv_count)
     return inv_count
  
   
@@ -204,7 +204,8 @@ def bfs(tab):
         x = abertos.popleft()
         if x.matriz == obj:
             fechados.append(x)
-            print('\n\t# Busca em Largura #')
+            print('\n#########################################################')
+            print('\t\t  Busca em Largura ')
             print('CAMINHO:')
             passos = imprime_caminho(fechados, estado1, x, 0)
             print('Quantidade de passos até encontrar o Objetivo: ',  passos)
@@ -277,7 +278,9 @@ def A_Estrela_h1(tab):
         x = abertos.pop(0)
         if x.matriz == obj:
             fechados.append(x)
-            print('\n\t# Peças fora do lugar (h1) #')
+            print('\n#########################################################')
+            print('\t\t  Busca Heurística A* ')
+            print('\t\t# Peças fora do lugar (h1) #')
             print('CAMINHO:')
             passos = imprime_caminho(fechados, estado1, x, 0)
             print('Quantidade de passos até encontrar o Objetivo: ', passos)
@@ -350,7 +353,9 @@ def Gulosa_h2(tab):
         x = abertos.pop(0)
         if x.matriz == obj:
             fechados.append(x)
-            print('\n\t# Distância Manhattan (h2) #')
+            print('\n#########################################################')
+            print('\t\t  Busca Heurística Gulosa ')
+            print('\t\t# Distância Manhattan (h2) #')
             print('CAMINHO:')
             passos = imprime_caminho(fechados, estado1, x, 0)
             print('Quantidade de passos até encontrar o Objetivo: ', passos)
@@ -423,7 +428,9 @@ def A_Estrela_h3(tab):
         x = abertos.pop(0)
         if x.matriz == obj:
             fechados.append(x)
-            print('\n\t# Distância Euclidiana (h3) #')
+            print('\n#########################################################')
+            print('\t\t  Busca Heurística A* ')
+            print('\t\t# Distância Euclidiana (h3) #')
             print('CAMINHO:')
             passos = imprime_caminho(fechados, estado1, x, 0)
             print('Quantidade de passos até encontrar o Objetivo: ', passos)
@@ -463,9 +470,9 @@ def A_Estrela_h3(tab):
 # Verifica se é solucionável.    
 if isSolvable(puzzle):
     print('Solucionavel')
-    print(A_Estrela_h1(tab))
     print(Gulosa_h2(tab))
     print(A_Estrela_h3(tab))
+    print(A_Estrela_h1(tab))
     print(bfs(tab))
 else:
     print('Não solucionavel')
